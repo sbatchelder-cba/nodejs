@@ -1,0 +1,22 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: action
+name: 'NodeJS Build'
+description: 'NodeJS Build'
+
+# inputs:
+#   context:
+#     description: 'NodeJS build context'
+#     default: ${{ cloudbees.workspace }}
+#   build-args:
+#     description: 'NodeJS build arguments'
+#     required: false
+#     default: ''
+
+runs:
+  using: composite
+  steps:
+    - id: nodejs18-build
+      uses: docker://node:18
+      shell: sh
+      run: | 
+        npm version
